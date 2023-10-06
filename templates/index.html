@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Domain</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+        }
+        .container {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            font-family: Arial, sans-serif;
+        }   
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center; 
+        }
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .domain-check-form {
+            margin-top: 20px;
+        }
+        
+        .domain-check-input {
+            padding: 10px;
+            font-size: 16px;
+            width: 400px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        .domain-check-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .domain-check-button:hover {
+            background-color: #45a049;
+        }
+        .container h1{
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .domain-result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .alert {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Domain</h1>
+    <div class="container">
+    
+        <form class="domain-check-form" method="POST">
+            {% if domain %}
+            <input type="domain" id="domain" class="domain-check-input" name="domain" placeholder="{{domain}}">
+            {% else %}
+            <input type="domain" id="domain" class="domain-check-input" name="domain" placeholder="https://...">
+            {% endif %}
+            {% if message %}
+            <h5 class="alert">{{message}}</h5>
+            {% endif %}
+            <button type="submit" class="domain-check-button">Check</button>
+        </form>
+    </div>
+    <div class="table">
+        {% if list_ip %}
+        <table>
+            <tr>
+                <th>id</th>
+                <th>ip</th>
+                <th>description</th>
+            </tr>
+            {% for ip in list_ip %}
+            <tr>
+                <td>{{list_ip.index(ip)+1}}</td>
+                <td>{{domain}}</td>
+                <td>{{ip}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
