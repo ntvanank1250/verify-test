@@ -1,2 +1,2 @@
 # verify-test
-test verify
+pip install -r requirements.txt
