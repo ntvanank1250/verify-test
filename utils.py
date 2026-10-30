@@ -59,7 +59,7 @@ def get_ip(domain,domain_config=DomainConfig()):
     domain_config.domain_type = "CNAME"
     try:
         resolver_answers = resolver.query(domain, "CNAME")
-    except:
+    except Exception:
         domain_config.domain_type = "A"
     if domain_config.domain_type == "A":
         try:
